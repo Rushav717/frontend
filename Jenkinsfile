@@ -44,14 +44,14 @@ pipeline {
                 }
             }
         }
-        // stage('trigger deploy') {
-        //     when { 
-        //         expression { params.deploy }
-        //     }
-        //     steps{
-        //         build job: 'frontend-cd', parameters: [string(name: 'version', value: "${appVersion}")], wait: true 
-        //     }
-        // }
+        stage('trigger deploy') {
+            when { 
+                expression { params.deploy }
+            }
+            steps{
+                build job: 'frontend-cd', parameters: [string(name: 'version', value: "${appVersion}")], wait: true 
+            }
+        }
         
         }
 
